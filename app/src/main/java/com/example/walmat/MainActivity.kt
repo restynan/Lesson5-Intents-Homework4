@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
    // private lateinit var email1: TextView
     //private lateinit var x:String
-    var arr=ArrayList<User>(arrayListOf(User("Resty","Nasimbwa","restynan@gmail.com","1"),User("Paul","Musa","pmusa@gmail.com","2"),User("Joy","Naku","jnaku@gmail.com","3"),
+    var arr=ArrayList<User>(arrayListOf(User("Resty","Nasimbwa","restynan@gmail.com","111111"),User("Paul","Musa","pmusa@gmail.com","2"),User("Joy","Naku","jnaku@gmail.com","3"),
         User("Ruth","Namale","rnamale@gmail.com","4") , User("Emma","Favour","efavour@gmail.com","5")
     ))
 
@@ -90,7 +90,12 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent()
         intent.action = Intent.ACTION_SEND
         intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT, userPassword )
-        startActivity(intent)}}
+                intent.putExtra(Intent.EXTRA_EMAIL,input)
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Your Password")
+        intent.putExtra(Intent.EXTRA_TEXT,"your password is: $userPassword ")
+                startActivity(Intent.createChooser(intent, "Send Email"))
+            }}
     }
 }
+
+
